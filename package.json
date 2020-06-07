@@ -6,15 +6,45 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "electron-is-dev": "^1.2.0",
+    "grapesjs": "^0.16.12",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-icons": "^3.10.0",
+    "react-scripts": "3.4.1",
+    "react-tabs": "^3.1.1"
   },
+  "author": {
+    "name": "Reti Fier",
+    "email": "aungnaingwin.2611@gmail.com"
+  },
+  "build": {
+    "appId": "com.web_builder.web_builder",
+    "productName": "Web_Builder",
+    "copyright": "Copyright © 2019 ${author}",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "dev": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "eject": "react-scripts eject",
+    "ebuild": "npm run build && node_modules/.bin/build",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "electron-builder -w --dir"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +60,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@rescripts/cli": "^0.0.14",
+    "@rescripts/rescript-env": "^0.0.12",
+    "concurrently": "^5.2.0",
+    "electron": "^9.0.0",
+    "electron-builder": "^22.7.0",
+    "lodash": "^4.17.15",
+    "typescript": "^3.9.3",
+    "wait-on": "^5.0.0"
   }
 }
