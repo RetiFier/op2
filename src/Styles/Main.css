@@ -26,4 +26,17 @@
   flex-basis: 250px;
   position: relative;
   overflow-y: auto;
+  height: auto;
+}
+
+.panel__right::selection {
+  background-color: #379683 !important;
+  color: #ffffff !important;
+}
+.panel__right::-webkit-scrollbar {
+  width: 6px;
+  background-color: #379683;
+}
+.panel__right::-webkit-scrollbar-thumb {
+  background-color: #379683;
 }

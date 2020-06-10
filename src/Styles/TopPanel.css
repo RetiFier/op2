@@ -5,7 +5,11 @@
   position: initial;
   justify-content: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .panel__basic-actions {
+  position: initial;
+}
+.device-desktop {
   position: initial;
 }

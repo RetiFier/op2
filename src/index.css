@@ -1,7 +1,5 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Ubuntu";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
@@ -15,4 +13,20 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+::selection {
+  background-color: #379683 !important;
+  color: #ffffff !important;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #379683;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #379683;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
