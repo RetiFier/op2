@@ -39,7 +39,7 @@
     "start": "rescripts start",
     "build": "rescripts build",
     "test": "rescripts test",
-    "dev": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "dev": "concurrently  \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "eject": "react-scripts eject",
     "ebuild": "npm run build && node_modules/.bin/build",
     "postinstall": "electron-builder install-app-deps",

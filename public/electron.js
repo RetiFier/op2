@@ -13,7 +13,7 @@ function createWindow() {
     height: 680,
     webPreferences: {
       nodeIntegration: true,
-      preload: __dirname + "/preload.js", // <--- (2) Preload script
+      preload: __dirname + "./preload.js", // <--- (2) Preload script
     },
   });
   mainWindow.loadURL(

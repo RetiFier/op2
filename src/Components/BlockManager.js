@@ -36,9 +36,9 @@ const BlockManager = ({ editor }) => {
   }, [editor]);
   return (
     <>
-      <div className="section" />
+      {/* <div className="section" />
       <div className="text" />
-      <div className="image" />
+      <div className="image" /> */}
     </>
   );
 };
