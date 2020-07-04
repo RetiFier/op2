@@ -13,3 +13,26 @@
 .device-desktop {
   position: initial;
 }
+.imp {
+  font-family: Helvetica, sans-serif;
+  overflow-y: auto;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+.imp-dialog {
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.05);
+  animation: gjs-slide-down 0.215s;
+  margin: auto;
+  max-width: 850px;
+  width: 90%;
+  border-radius: 3px;
+  font-weight: lighter;
+  position: relative;
+  z-index: 2;
+}

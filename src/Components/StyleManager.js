@@ -17,6 +17,7 @@ const StyleManager = ({ editor }) => {
           "left",
           "bottom",
         ],
+
         properties: [
           {
             name: "Float",
@@ -167,6 +168,11 @@ const StyleManager = ({ editor }) => {
           //   type: "background-color",
           // },
         ],
+      });
+      styleManager.addSector("Background Image", {
+        name: "Background Image",
+        open: false,
+        buildProps: ["background"],
       });
       styleManager.addSector("Flex", {
         name: "Flex",
@@ -386,6 +392,12 @@ const StyleManager = ({ editor }) => {
         open: false,
         buildProps: ["background-color", "box-shadow", "custom-prop"],
         properties: [
+          {
+            name: "Gradient",
+            property: "background-image",
+            type: "gradient",
+            defaults: "none",
+          },
           {
             id: "custom-prop",
             name: "Custom Label",
