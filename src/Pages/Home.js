@@ -15,6 +15,7 @@ import customCode from "grapesjs-custom-code";
 import gradient from "grapesjs-style-gradient";
 import "grapick/dist/grapick.min.css";
 import tUIImageEditor from "grapesjs-tui-image-editor";
+import gjsForms from 'grapesjs-plugin-forms';
 
 const Home = () => {
   const [editor, setEditor] = useState();
@@ -32,7 +33,7 @@ const Home = () => {
       //     "https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js",
       //   ],
       // },
-      plugins: [thePlugin, customCode, gradient, tUIImageEditor],
+      plugins: [thePlugin, customCode, gradient, tUIImageEditor , gjsForms],
       pluginsOpts: {
         [thePlugin]: {
           /* options */
@@ -50,6 +51,9 @@ const Home = () => {
               },
             },
           },
+          [gjsForms]:{
+            //config here
+          }
         },
       },
       // Size of the editor

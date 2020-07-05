@@ -14,17 +14,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-::selection {
-  background-color: #379683 !important;
-  color: #ffffff !important;
-}
-::-webkit-scrollbar {
-  width: 6px;
-  background-color: #379683;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #379683;
-}
+
 * {
   box-sizing: border-box;
   margin: 0;

@@ -1,3 +1,4 @@
+
 .panel__top {
   padding: 0;
   width: 100%;
@@ -5,19 +6,16 @@
   position: initial;
   justify-content: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 .panel__basic-actions {
   position: initial;
-  background-color: black;
 }
 .panel__basic-actions-2 {
   position: initial;
-  background-color: black;
 }
 .panel__basic-actions-3 {
   position: initial;
-  background-color: black;
 }
 .device-desktop {
   position: initial;
@@ -45,3 +43,33 @@
   position: relative;
   z-index: 2;
 }
+
+.gjs-one-bg {
+  background-color: teal;
+}
+.gjs-pn-btn {
+  background-color: #66b2b2;
+  border-radius: 5px;
+  color: #fff !important;
+}
+.gjs-pn-btn:hover { background-color:#004c4c;}
+/* Help And About Us icon Section */
+.panel__basic-actions-3 .gjs-pn-buttons {
+  justify-content: flex-end;
+}
+.gjs-four-color-h:hover {color: #66b2b2}
+
+/* Help And About Us icon Section */
+.panel__basic-actions .gjs-pn-buttons {
+  justify-content: flex-start;
+}
+
+/* Help And About Us icon Section */
+.panel__basic-actions-2 .gjs-pn-buttons {
+  justify-content: center;
+}
+
+.gjs-pn-panel .gjs-pn-panel {
+  width: 200px;
+}
+

@@ -51,6 +51,18 @@
   position: relative;
   overflow-y: auto;
   height: auto;
+
+}
+.react-tabs__tab-list {
+  border-bottom: 0px solid #aaa;
+  padding: 6px 0px;
+  background-color: #004c4c;
+}
+.react-tabs__tab--selected {
+  background: #fff;
+  border-color: #aaa;
+  color: black;
+  border-radius: 6px;
 }
 
 .panel__left {
@@ -61,14 +73,22 @@
   background-color: lawngreen;
 }
 
-.panel__right::selection {
-  background-color: #379683 !important;
+::selection {
+  background-color: #fff !important;
   color: #ffffff !important;
 }
-.panel__right::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 6px;
-  background-color: #379683;
+  background-color: 	#004c4c;
 }
-.panel__right::-webkit-scrollbar-thumb {
-  background-color: #379683;
+::-webkit-scrollbar-thumb {
+  background-color: #66b2b2;
 }
+
+/*Start Right Panel Block Feature Styling */
+
+.gjs-block .gjs-block-label p {padding-bottom: 10px}
+
+.gjs-block .gjs-block-label i.fa {font-size: xxx-large;}
+
+/*End  Right Panel Block Feature Styling */
