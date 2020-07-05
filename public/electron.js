@@ -16,6 +16,7 @@ function createWindow() {
       preload: __dirname + "./preload.js", // <--- (2) Preload script
     },
   });
+  mainWindow.setMenuBarVisibility(false);
   mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
