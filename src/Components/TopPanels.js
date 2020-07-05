@@ -153,6 +153,14 @@ const TopPanels = ({ editor }) => {
           // viewer.refresh();
         },
       });
+      cmdm.add("clear-canvas", function () {
+        // eslint-disable-next-line no-restricted-globals
+        // if (confirm("This will be delete entire Page. Are you Sure?")) {
+        editor.DomComponents.clear();
+        setTimeout(function () {
+          localStorage.clear();
+        }, 0);
+      });
 
       // const HtmlAuto = (htmlCodeEditor) => {
       //   function update() {
@@ -311,7 +319,10 @@ const TopPanels = ({ editor }) => {
         buttons: [
           {
             id: "export",
-            className: "fa fa-download",
+            className: "fa fa-code",
+            attributes: {
+              title: "View Code",
+            },
             command: "export-template",
             context: "export-template", // For grouping context of buttons from the same panel
           },
@@ -323,54 +334,38 @@ const TopPanels = ({ editor }) => {
           //   attributes: { title: "Fullscreen" },
           // },
           {
-            id: "set-device-desktop",
-            command: function (e) {
-              return e.setDevice("Desktop");
-            },
-            className: "fa fa-desktop",
-            active: 1,
-          },
-          {
-            id: "set-device-tablet",
-            command: function (e) {
-              return e.setDevice("Tablet");
-            },
-            className: "fa fa-tablet",
-          },
-          {
-            id: "set-device-tablet2",
-            command: function (e) {
-              return e.setDevice("Tablet 2");
-            },
-            className: "fa fa-tablet",
-          },
-          {
-            id: "set-device-mobile",
-            command: function (e) {
-              return e.setDevice("Mobile portrait");
-            },
-            className: "fa fa-mobile",
-          },
-          {
             id: "edit",
-            className: "fa fa-cloud-upload",
+            className: "fa fa-pencil-square-o ",
             command: "html-edit",
             attributes: {
               title: "Edit",
             },
           },
           {
-            id: "clear",
+            id: "clearCanvas",
             className: "fa fa-trash",
-            command: function (e) {
-              if (window.confirm("Are you sure to clean")) {
-                console.log(e);
-                e.DomComponents.clear();
-                setTimeout(function () {
-                  localStorage.clear();
-                }, 0);
-              }
+            attributes: {
+              title: "Delete All the Code",
             },
+            command: "clear-canvas",
+            // command: function (e) {
+            //   // if (
+            //   //   window.confirm("This will be delete entire Page. Are you Sure?")
+            //   // ) {
+            //   const trigger = window.confirm(
+            //     "This will be delete entire Page. Are you Sure?"
+            //   );
+            //   if (trigger === true) {
+            //     e.DomComponents.clear();
+            //   }
+
+            //   console.log(e);
+
+            //   //   setTimeout(function () {
+            //   //     localStorage.clear();
+            //   //   }, 0);
+            //   // }
+            // },
           },
           // {
           //   id: "open-code",
@@ -405,13 +400,11 @@ const TopPanels = ({ editor }) => {
           // },
 
           {
-            id: "preview",
-            className: "fa fa-eye",
-            command: "preview",
-          },
-          {
             id: "undo",
             className: "fa fa-undo",
+            attributes: {
+              title: "Undo",
+            },
             command: function (e) {
               console.log(e);
               e.UndoManager.undo();
@@ -420,6 +413,9 @@ const TopPanels = ({ editor }) => {
           {
             id: "redo",
             className: "fa fa-repeat",
+            attributes: {
+              title: "Redo",
+            },
             command: function (e) {
               e.UndoManager.redo();
             },
@@ -433,6 +429,75 @@ const TopPanels = ({ editor }) => {
           // },
         ],
       });
+      panelManager.addPanel({
+        id: "basic-actions-2",
+        el: ".panel__basic-actions-2",
+        buttons: [
+          {
+            id: "set-device-desktop",
+            command: function (e) {
+              return e.setDevice("Desktop");
+            },
+            attributes: {
+              title: "Default Desktop Size",
+            },
+            className: "fa fa-desktop",
+            active: 1,
+          },
+          {
+            id: "set-device-tablet",
+            attributes: {
+              title: "Tablet Size",
+            },
+            command: function (e) {
+              return e.setDevice("Tablet");
+            },
+            className: "fa fa-tablet",
+          },
+          // {
+          //   id: "set-device-tablet2",
+          //   command: function (e) {
+          //     return e.setDevice("Tablet 2");
+          //   },
+          //   className: "fa fa-tablet",
+          // },
+          {
+            id: "set-device-mobile",
+            attributes: {
+              title: "Mobile Size",
+            },
+            command: function (e) {
+              return e.setDevice("Mobile portrait");
+            },
+            className: "fa fa-mobile",
+          },
+          {
+            id: "preview",
+            className: "fa fa-eye",
+            command: "preview",
+          },
+        ],
+      });
+      panelManager.addPanel({
+        id: "basic-actions-3",
+        el: ".panel__basic-actions-3",
+        buttons: [
+          {
+            id: "about",
+            attributes: {
+              title: "About",
+            },
+            className: "fa fa-info-circle",
+          },
+          {
+            id: "help",
+            attributes: {
+              title: "Help",
+            },
+            className: "fa fa-question",
+          },
+        ],
+      });
     }
   });
 
@@ -442,6 +507,8 @@ const TopPanels = ({ editor }) => {
 
       <div className="panel__top">
         <div className="panel__basic-actions"></div>
+        <div className="panel__basic-actions-2"></div>
+        <div className="panel__basic-actions-3"></div>
       </div>
     </>
   );

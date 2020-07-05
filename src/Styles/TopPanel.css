@@ -9,6 +9,15 @@
 }
 .panel__basic-actions {
   position: initial;
+  background-color: black;
+}
+.panel__basic-actions-2 {
+  position: initial;
+  background-color: black;
+}
+.panel__basic-actions-3 {
+  position: initial;
+  background-color: black;
 }
 .device-desktop {
   position: initial;
