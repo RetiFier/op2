@@ -37,7 +37,16 @@ const StyleManager = ({ editor }) => {
         name: "Dimension",
         open: false,
         // Use built-in properties
-        buildProps: ["width", "min-height", "padding"],
+        buildProps: [
+          "width",
+          "height",
+          "min-width",
+          "max-width",
+          "min-height",
+          "max-height",
+          "padding",
+          "margin",
+        ],
         // Use `properties` to define/override single property
         properties: [
           {
@@ -46,7 +55,7 @@ const StyleManager = ({ editor }) => {
             type: "integer",
             name: "The width", // Label for the property
             property: "width", // CSS property (if buildProps contains it will be extended)
-            units: ["px", "%"], // Units, available only for 'integer' types
+            // units: ["px", "%"], // Units, available only for 'integer' types
             defaults: "auto", // Default value
             min: 0, // Min value, available only for 'integer' types
           },

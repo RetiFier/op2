@@ -4,12 +4,16 @@
 /node_modules
 /.pnp
 .pnp.js
+yarn.lock
+
 
 # testing
 /coverage
 
 # production
 /build
+/dist
+/release
 
 # misc
 .DS_Store

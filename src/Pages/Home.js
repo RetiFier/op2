@@ -15,7 +15,7 @@ import customCode from "grapesjs-custom-code";
 import gradient from "grapesjs-style-gradient";
 import "grapick/dist/grapick.min.css";
 import tUIImageEditor from "grapesjs-tui-image-editor";
-import gjsForms from 'grapesjs-plugin-forms';
+import gjsForms from "grapesjs-plugin-forms";
 
 const Home = () => {
   const [editor, setEditor] = useState();
@@ -33,7 +33,14 @@ const Home = () => {
       //     "https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js",
       //   ],
       // },
-      plugins: [thePlugin, customCode, gradient, tUIImageEditor , gjsForms],
+      storageManager: {
+        id: "gjs", // Prefix identifier that will be used on parameters
+        type: "local", // Type of the storage
+        autosave: true, // Store data automatically
+        autoload: true, // Autoload stored data on init
+        stepsBeforeSave: 1, // If autosave enabled, indicates how many changes are necessary before store method is triggered
+      },
+      plugins: [thePlugin, customCode, gradient, tUIImageEditor, gjsForms],
       pluginsOpts: {
         [thePlugin]: {
           /* options */
@@ -51,16 +58,16 @@ const Home = () => {
               },
             },
           },
-          [gjsForms]:{
+          [gjsForms]: {
             //config here
-          }
+          },
         },
       },
       // Size of the editor
       height: window.screen.height,
       width: "100%",
       // Disable the storage manager for the moment
-      storageManager: false,
+      // storageManager: true,
       // Avoid any default panel
       layerManager: {
         appendTo: ".layers-container",
@@ -112,6 +119,7 @@ const Home = () => {
         appendTo: ".styles-container",
       },
       styleManager: {
+        clearProperties: true,
         appendTo: ".styles-container",
       },
       blockManager: {
