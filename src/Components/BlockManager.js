@@ -167,7 +167,7 @@ const BlockManager = ({ editor }) => {
         // You can pass components as a JSON instead of a simple HTML string,
         // in this case we also use a defined component type `image`
         content:
-          "<div class='block'><div data-gjs-type='image'></div></div>" +
+          "<div class='block'><img data-gjs-type='image' /></div>" +
           "<style> .block {display:block; padding: 15px; background-color: #ee0290;} </style>",
         // This triggers `active` event on dropped components and the `image`
         // reacts by opening the AssetManager
