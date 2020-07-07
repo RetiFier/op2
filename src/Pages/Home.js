@@ -4,7 +4,7 @@ import "grapesjs/dist/css/grapes.min.css";
 import grapesjs from "grapesjs";
 import "../Styles/Main.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { FaPalette, FaBuffer, FaCode } from "react-icons/fa";
+import { FaPalette, FaBuffer, FaCogs } from "react-icons/fa";
 import { AiOutlineBlock } from "react-icons/ai";
 import TopPanels from "../Components/TopPanels";
 import StyleManager from "../Components/StyleManager";
@@ -144,6 +144,9 @@ const Home = () => {
       blockManager: {
         appendTo: ".blocks-container",
       },
+      traitManager: {
+        appendTo: ".traits-container",
+      },
 
       // selectorManager: {
       //   appendTo: ".code",
@@ -152,7 +155,7 @@ const Home = () => {
       //   appendTo: ".panel",
       // },
     });
-
+    console.log(grapesEditor && grapesEditor.StyleManager.getSector("Setting"));
     setEditor(grapesEditor);
     // grapesEditor.on("canvas:dragenter", () => setTest(true));
     // console.log("test");
@@ -209,6 +212,9 @@ const Home = () => {
                 <FaPalette />
               </Tab>
               <Tab>
+                <FaCogs />
+              </Tab>
+              <Tab>
                 <FaBuffer />
               </Tab>
               <Tab>
@@ -218,6 +224,9 @@ const Home = () => {
             <TabPanel>
               <div className="styles-container"></div>
               <StyleManager editor={editor} />
+            </TabPanel>
+            <TabPanel>
+              <div className="traits-container"></div>
             </TabPanel>
             <TabPanel>
               <div className="layers-container"></div>
