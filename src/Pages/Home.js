@@ -44,6 +44,25 @@ const Home = () => {
       pluginsOpts: {
         [thePlugin]: {
           /* options */
+          root: {
+            css: {
+              "style.css": (ed) => ed.getCss(),
+            },
+
+            "index.html": (ed) =>
+              `<!doctype html>
+          <html lang="en">
+          <head>
+          <meta charset="utf-8"> 
+          <meta name="description" content="Free Prototyping Tool"> <meta name="keywords" > 
+          <meta name="author" content="One Page Prototyping Tool"> 
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="./css/style.css">
+          </head>
+          <body>${ed.getHtml()}</body>
+          </html>
+ `,
+          },
         },
         [gradient]: {
           colorPicker: "default",
