@@ -16,6 +16,7 @@ import gradient from "grapesjs-style-gradient";
 import "grapick/dist/grapick.min.css";
 import tUIImageEditor from "grapesjs-tui-image-editor";
 import gjsForms from "grapesjs-plugin-forms";
+import gjsBootstrap4 from "grapesjs-blocks-bootstrap4";
 
 const Home = () => {
   const [editor, setEditor] = useState();
@@ -28,11 +29,16 @@ const Home = () => {
       // Get the content for the canvas directly from the element
       // As an alternative we could use: `components: '<h1>Hello World Component!</h1>'`,
       fromElement: true,
-      // canvas: {
-      //   scripts: [
-      //     "https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js",
-      //   ],
-      // },
+      canvas: {
+        styles: [
+          "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css",
+        ],
+        scripts: [
+          "https://code.jquery.com/jquery-3.3.1.slim.min.js",
+          "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js",
+          "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js",
+        ],
+      },
       storageManager: {
         id: "gjs", // Prefix identifier that will be used on parameters
         type: "local", // Type of the storage
@@ -40,7 +46,7 @@ const Home = () => {
         autoload: true, // Autoload stored data on init
         stepsBeforeSave: 1, // If autosave enabled, indicates how many changes are necessary before store method is triggered
       },
-      plugins: [thePlugin, customCode, gradient, tUIImageEditor, gjsForms],
+      plugins: [thePlugin, customCode, gradient, tUIImageEditor, gjsBootstrap4],
       pluginsOpts: {
         [thePlugin]: {
           /* options */
@@ -57,11 +63,16 @@ const Home = () => {
           <meta name="description" content="Free Prototyping Tool"> <meta name="keywords" > 
           <meta name="author" content="One Page Prototyping Tool"> 
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
           <link rel="stylesheet" href="./css/style.css">
+
           </head>
           <body>${ed.getHtml()}</body>
           </html>
- `,
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+`,
           },
         },
         [gradient]: {
@@ -82,6 +93,7 @@ const Home = () => {
           },
         },
       },
+
       // Size of the editor
       height: window.screen.height,
       width: "100%",

@@ -6,6 +6,38 @@ const path = require("path");
 const isDev = require("electron-is-dev");
 const nativeImage = require("electron").nativeImage;
 const find = require("find-process");
+const contextMenu = require("electron-context-menu");
+
+const fs = require("fs");
+
+contextMenu({
+  prepend: (params, browserWindow) => [
+    {
+      role: "copy",
+    },
+    {
+      role: "paste",
+    },
+
+    {
+      role: "togglefullscreen",
+    },
+    {
+      role: "zoomIn",
+    },
+    {
+      role: "zoomOut",
+    },
+    {
+      role: "resetZoom",
+    },
+
+    {
+      role: "quit",
+    },
+  ],
+});
+
 let mainWindow;
 var image = nativeImage.createFromPath(__dirname + "/OP2_logo.png");
 image.setTemplateImage(true);
@@ -16,6 +48,7 @@ function createWindow() {
     transparent: false,
     webPreferences: {
       nodeIntegration: true,
+
       preload: path.join(__dirname + "/preload.js"), // <--- (2) Preload script
     },
   });
