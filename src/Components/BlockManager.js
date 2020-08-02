@@ -7,16 +7,14 @@ const BlockManager = ({ editor }) => {
     const blockManager = !isEmpty(editor) && editor.BlockManager;
     console.log(blockManager);
     if (!isEmpty(editor)) {
-
-       // Start of Typography Component //
-       blockManager.add("header1", {
+      // Start of Typography Component //
+      blockManager.add("header1", {
         id: "header1",
         category: "Typography",
         label:
           "<div><p><b>Header 1</b></p> <i class='fa fa-font' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Header 1" },
-        content:
-          "<h1>h1: heading</h1>",
+        content: "<h1>h1: heading</h1>",
       });
 
       blockManager.add("header2", {
@@ -25,8 +23,7 @@ const BlockManager = ({ editor }) => {
         label:
           "<div><p><b>Header 2</b></p> <i class='fa fa-font' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Header 2" },
-        content:
-          "<h2>h2: heading</h2>",
+        content: "<h2>h2: heading</h2>",
       });
 
       blockManager.add("header3", {
@@ -35,8 +32,7 @@ const BlockManager = ({ editor }) => {
         label:
           "<div><p><b>Header 3</b></p> <i class='fa fa-font' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Header 2" },
-        content:
-          "<h3>h3: heading</h3>",
+        content: "<h3>h3: heading</h3>",
       });
 
       blockManager.add("header4", {
@@ -45,8 +41,7 @@ const BlockManager = ({ editor }) => {
         label:
           "<div><p><b>Header 4</b></p> <i class='fa fa-font' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Header 4" },
-        content:
-          "<h4>h4: heading</h4>",
+        content: "<h4>h4: heading</h4>",
       });
 
       blockManager.add("header5", {
@@ -55,8 +50,7 @@ const BlockManager = ({ editor }) => {
         label:
           "<div><p><b>Header 5</b></p> <i class='fa fa-font' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Header 5" },
-        content:
-          "<h4>h5: heading</h4>",
+        content: "<h4>h5: heading</h4>",
       });
 
       blockManager.add("header6", {
@@ -65,8 +59,7 @@ const BlockManager = ({ editor }) => {
         label:
           "<div><p><b>Header 6</b></p> <i class='fa fa-font' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Header 6" },
-        content:
-          "<h6>h6: heading</h6>",
+        content: "<h6>h6: heading</h6>",
       });
 
       blockManager.add("paragraph", {
@@ -99,7 +92,6 @@ const BlockManager = ({ editor }) => {
           "<ol><li>List</li><li>List</li><li>List</li><li>List</li><li>List</li></ol>",
       });
       // End of Typography Component //
-
 
       // Start Of Basic Component //
 
@@ -146,14 +138,13 @@ const BlockManager = ({ editor }) => {
         activate: true,
       });
 
-      blockManager.add("button", {
-        id: "button",
+      blockManager.add("input", {
+        id: "input",
         category: "Basic",
         label:
-          "<div><p><b> Button </b></p> <i class='fa fa-hand-o-up' aria-hidden='true'></i>",
-        attributes: { class: "gjs-block", title: "Button" },
-        content:
-          "<button class='btn btn-primary' type='button'>Button</button>",
+          "<div><p><b> input </b></p> <i class='fa fa-text-width' aria-hidden='true'></i>",
+        attributes: { class: "gjs-block", title: "input" },
+        content: "<input href='' />",
       });
 
       blockManager.add("card", {
@@ -163,10 +154,10 @@ const BlockManager = ({ editor }) => {
           "<div><p><b> Card </b></p> <i class='fa fa-id-card-o' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Card" },
         content:
-          "<div class='card'>"+
-          "<img data-gjs-type='image' />"+
-          "<div class='card-body'><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div>"+
-          "<style>.card {width: 250px;} .card img{width: 100%;} </style>"          
+          "<div class='card'>" +
+          "<img data-gjs-type='image' />" +
+          "<div class='card-body'><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div>" +
+          "<style>.card {width: 250px;} .card img{width: 100%;} </style>",
       });
 
       blockManager.add("dropdown", {
@@ -176,15 +167,15 @@ const BlockManager = ({ editor }) => {
           "<div><p><b> Dropdown </b></p> <i class='fa fa-caret-square-o-down' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Card" },
         content:
-        '<div class="dropdown">'+
-        '<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
-          '<p>Dropdown</p>' +
-        '</button>'+
-        '<div class="dropdown-menu" aria-labelledby="dropdownMenu">'+
-        '<button class="dropdown-item" type="button"><p>Dropdown list</p></button>'+
-        '<button class="dropdown-item" type="button"><p>Dropdown list</p></button>'+
-        '<button class="dropdown-item" type="button"><p>Dropdown list</p></button>'+
-        '</div>',
+          '<div class="dropdown">' +
+          '<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+          "<p>Dropdown</p>" +
+          "</button>" +
+          '<div class="dropdown-menu" aria-labelledby="dropdownMenu">' +
+          '<button class="dropdown-item" type="button"><p>Dropdown list</p></button>' +
+          '<button class="dropdown-item" type="button"><p>Dropdown list</p></button>' +
+          '<button class="dropdown-item" type="button"><p>Dropdown list</p></button>' +
+          "</div>",
       });
 
       blockManager.add("form_iput", {
@@ -194,50 +185,52 @@ const BlockManager = ({ editor }) => {
           "<div><p><b>Form Input</b></p> <i class='fa fa-keyboard-o' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Form Input" },
         content:
-        '<form>'+
-        '<div class="form-group"><label>Input Box</label><input type="text" class="form-control" aria-describedby="emailHelp"></div>'+
-        '</form>',
+          "<form>" +
+          '<div class="form-group"><label>Input Box</label><input type="text" class="form-control" aria-describedby="emailHelp"></div>' +
+          "</form>",
       });
 
       blockManager.add("form", {
         id: "form_input",
         category: "Basic",
         label:
-          "<div><p><b>Form</b></p> <i class='fa fa-square' aria-hidden='true'></i>",
+          "<div><p><b>Form</b></p> <i class='fa fa-list-alt' aria-hidden='true'></i>",
         attributes: { class: "gjs-block", title: "Form Input" },
         content:
-        '<form>'+
-        '<div class="form-group"><label>Input Box</label><input type="text" class="form-control" aria-describedby="emailHelp"></div>'+
-        '<div class="form-group">'+
-        '<label for="exampleFormControlSelect1">Example select</label>'+
-        '<select class="form-control" id="exampleFormControlSelect1">'+
-        '<option>Option list</option>'+
-        '<option>Option list</option>'+
-        '<option>Option list</option>'+
-        '<option>Option list</option>'+
-        '<option>Option list</option>'+
-        '</select>'+
-        '</div>'+
-        '<div class="form-group">'+
-        '<label for="formControlRange">Range input</label>'+
-        '<input type="range" class="form-control-range" id="formControlRange">'+
-        '</div>'+
-        '<div class="form-check">'+
-        '<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">'+
-        '<label class="form-check-label" for="defaultCheck1">'+
-        '<p>checkbox</p>'+
-        '</label>'+
-        '</div>'+
-        '<div class="form-check">'+
-        '<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">'+
-        '<label class="form-check-label" for="exampleRadios2">'+
-        '<p>radio</p>'+
-        '</label>'+ 
-        '</div>'+
-        '</form>',
+          "<form>" +
+          '<div class="form-group"><label>Input Box</label><input type="text" class="form-control" aria-describedby="emailHelp"></div>' +
+          '<div class="form-group">' +
+          '<label for="exampleFormControlSelect1">Example select</label>' +
+          '<select class="form-control" id="exampleFormControlSelect1">' +
+          "<option>Option list</option>" +
+          "<option>Option list</option>" +
+          "<option>Option list</option>" +
+          "<option>Option list</option>" +
+          "<option>Option list</option>" +
+          "</select>" +
+          "</div>" +
+          '<div class="form-group">' +
+          '<label for="formControlRange">Range input</label>' +
+          '<input type="range" class="form-control-range" id="formControlRange">' +
+          "</div>" +
+          '<div class="form-check">' +
+          '<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">' +
+          '<label class="form-check-label" for="defaultCheck1">' +
+          "<p>checkbox</p>" +
+          "</label>" +
+          "</div>" +
+          '<div class="form-check">' +
+          '<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">' +
+          '<label class="form-check-label" for="exampleRadios2">' +
+          "<p>radio</p>" +
+          "</label>" +
+          "</div>" +
+          "<button type='submit' class='btn btn-primary btn-lg btn-block'>Submit</button>" +
+          "<button type='reset' class='btn btn-secondary btn-lg btn-block'>Reset</button>" +
+          "</form>" +
+          "<style>form {padding: 15px;} </style>",
       });
 
-     
       // End Of Basic Component //
 
       // Start Of Layout Component //
@@ -272,9 +265,8 @@ const BlockManager = ({ editor }) => {
         attributes: { class: "gjs-block", title: "Row" },
         content:
           "<div class='container'><div class='row'><div class='col'></div><div class='col'></div></div></div>" +
-          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>"+
+          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>" +
           "<style>.row, .col{padding:15px;border: 1px dashed #333;}</style>",
-          
       });
 
       blockManager.add("column_half", {
@@ -285,9 +277,8 @@ const BlockManager = ({ editor }) => {
         attributes: { class: "gjs-block", title: "Column Half" },
         content:
           "<div class='container'><div class='row'><div class='col col-sm-6'></div><div class='col col-sm-6'></div></div></div>" +
-          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>"+
+          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>" +
           "<style>.row, .col{padding:15px;border: 1px dashed #333;}</style>",
-          
       });
 
       blockManager.add("column_4/12", {
@@ -298,9 +289,8 @@ const BlockManager = ({ editor }) => {
         attributes: { class: "gjs-block", title: "Column 4/12" },
         content:
           "<div class='container'><div class='row'><div class='col col-sm-4'></div><div class='col col-sm-4'></div><div class='col col-sm-4'></div></div></div>" +
-          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>"+
+          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>" +
           "<style>.row, .col{padding:15px;border: 1px dashed #333;}</style>",
-          
       });
 
       blockManager.add("column_3/12", {
@@ -311,9 +301,8 @@ const BlockManager = ({ editor }) => {
         attributes: { class: "gjs-block", title: "Column 3/12" },
         content:
           "<div class='container'><div class='row'><div class='col col-sm-3'></div><div class='col col-sm-3'></div><div class='col col-sm-3'></div><div class='col col-sm-3'></div></div></div>" +
-          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>"+
+          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>" +
           "<style>.row, .col{padding:15px;border: 1px dashed #333;}</style>",
-          
       });
 
       blockManager.add("column_4/12_8/12", {
@@ -324,9 +313,8 @@ const BlockManager = ({ editor }) => {
         attributes: { class: "gjs-block", title: "Row" },
         content:
           "<div class='container'><div class='row'><div class='col col-sm-4'></div><div class='col col-sm-8'></div></div></div>" +
-          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>"+
+          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>" +
           "<style>.row, .col{padding:15px;border: 1px dashed #333;}</style>",
-          
       });
 
       blockManager.add("column_3/12_6/12_3/12", {
@@ -337,9 +325,8 @@ const BlockManager = ({ editor }) => {
         attributes: { class: "gjs-block", title: "Column 3/12 6/12 3/12" },
         content:
           "<div class='container'><div class='row'><div class='col col-sm-3'></div><div class='col col-sm-6'></div><div class='col col-sm-3'></div></div>" +
-          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>"+
+          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>" +
           "<style>.row, .col{padding:15px;border: 1px dashed #333;}</style>",
-          
       });
 
       blockManager.add("column_2/12_8/12_2/12", {
@@ -350,14 +337,11 @@ const BlockManager = ({ editor }) => {
         attributes: { class: "gjs-block", title: "Column 2/12 8/12 2/12" },
         content:
           "<div class='container'><div class='row'><div class='col col-sm-2'></div><div class='col col-sm-8'></div><div class='col col-sm-2'></div></div>" +
-          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>"+
+          "<style>.container{padding-top:15px; padding-bottom:15px; background-color: #90ee02}</style>" +
           "<style>.row, .col{padding:15px;border: 1px dashed #333;}</style>",
-          
       });
 
       // End Of Layout Component //
-
-     
     }
   }, [editor]);
   return (

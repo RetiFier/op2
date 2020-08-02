@@ -16,7 +16,6 @@ import gradient from "grapesjs-style-gradient";
 import "grapick/dist/grapick.min.css";
 import tUIImageEditor from "grapesjs-tui-image-editor";
 import gjsForms from "grapesjs-plugin-forms";
-import gjsBootstrap4 from "grapesjs-blocks-bootstrap4";
 
 const Home = () => {
   const [editor, setEditor] = useState();
@@ -26,6 +25,8 @@ const Home = () => {
       // Indicate where to init the editor. You can also pass an HTMLElement
       container: "#gjs",
       allowScripts: 1,
+      draggable: true,
+
       // Get the content for the canvas directly from the element
       // As an alternative we could use: `components: '<h1>Hello World Component!</h1>'`,
       fromElement: true,
@@ -211,7 +212,7 @@ const Home = () => {
         <div className="column editor-canvas">
           <div id="gjs">
             <div className="text-center m-3 p-3">
-            <h1>Welcome form OP2</h1>
+              <h1>Welcome form OP2</h1>
             </div>
           </div>
         </div>

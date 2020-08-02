@@ -50,7 +50,157 @@ const TopPanels = ({ editor }) => {
       //     });
       //   return codeEditor;
       // };
+      editor.RichTextEditor.remove("link");
 
+      editor.RichTextEditor.add("dropcap", {
+        icon: "<b>D<sup>c</sup></b>",
+        attributes: { title: "Dropcap" },
+        result: (rte) => {
+          var component = editor.getSelected();
+
+          if (
+            component.is("text") &&
+            component.getClasses().includes("dropCaps")
+          ) {
+            component.replaceWith(`${component.get("content")}`);
+          } else {
+            var range = rte.selection().getRangeAt(0);
+
+            var container = range.commonAncestorContainer;
+
+            if (container.nodeType == 3) container = container.parentNode;
+
+            if (
+              container.nodeName == "SPAN" &&
+              container.classList.contains("dropCaps")
+            ) {
+              var parent = container.parentNode;
+              var content = document.createTextNode(container.innerHTML);
+
+              // insert all our children before ourselves.
+              parent.insertBefore(content, container);
+
+              parent.removeChild(container);
+            } else {
+              rte.insertHTML(
+                `<span class="dropCaps">${rte.selection()}</span>`
+              );
+            }
+          }
+        },
+      });
+
+      editor.RichTextEditor.add("superscript", {
+        icon: "<b>S<sup>s</sup></b>",
+        attributes: { title: "Superscript" },
+        result: (rte) => rte.exec("superscript"),
+      });
+
+      editor.RichTextEditor.add("subscript", {
+        icon: "<b>S<sub>s</sub></b>",
+        attributes: { title: "Subscript" },
+        result: (rte) => rte.exec("subscript"),
+      });
+
+      editor.RichTextEditor.add("hyperlink", {
+        icon: "&#128279;",
+        attributes: { title: "Hyperlink" },
+        result: (rte) => {
+          var component = editor.getSelected();
+
+          if (component.is("link")) {
+            component.replaceWith(`${component.get("content")}`);
+          } else {
+            var range = rte.selection().getRangeAt(0);
+
+            var container = range.commonAncestorContainer;
+            if (container.nodeType == 3) container = container.parentNode;
+
+            if (container.nodeName === "A") {
+              var sel = rte.selection();
+              sel.removeAllRanges();
+              range = document.createRange();
+              range.selectNodeContents(container);
+              sel.addRange(range);
+              rte.exec("unlink");
+            } else {
+              var url = window.confirm("Enter the URL to link to:");
+              if (url)
+                rte.insertHTML(
+                  `<a class="link" href="${url}">${rte.selection()}</a>`
+                );
+            }
+          }
+        },
+      });
+
+      editor.RichTextEditor.add("indent", {
+        icon: "&#8594;",
+        attributes: { title: "Indent" },
+        result: (rte) => rte.exec("indent"),
+      });
+
+      editor.RichTextEditor.add("outdent", {
+        icon: "&#8592;",
+        attributes: { title: "Outdent" },
+        result: (rte) => rte.exec("outdent"),
+      });
+
+      editor.RichTextEditor.add("orderedList", {
+        icon: "1.",
+        attributes: { title: "Ordered List" },
+        result: (rte) => rte.exec("insertOrderedList"),
+      });
+
+      editor.RichTextEditor.add("unorderedList", {
+        icon: "&#8226;",
+        attributes: { title: "Unordered List" },
+        result: (rte) => rte.exec("insertUnorderedList"),
+      });
+      // Trits
+      editor.DomComponents.addType("input", {
+        isComponent: (el) => el.tagName == "INPUT",
+        model: {
+          defaults: {
+            traits: [
+              // Strings are automatically converted to text types
+              "name", // Same as: { type: 'text', name: 'name' }
+              "placeholder",
+              "value",
+              "class",
+              "id",
+              {
+                type: "select", // Type of the trait
+                label: "Type", // The label you will see in Settings
+                name: "type", // The name of the attribute/property to use on component
+                options: [
+                  { id: "text", name: "Text" },
+                  { id: "email", name: "Email" },
+                  { id: "password", name: "Password" },
+                  { id: "number", name: "Number" },
+                  { id: "radio", name: "radio" },
+                  { id: "button", name: "button" },
+                  { id: "checkbox", name: "checkbox" },
+                  { id: "date", name: "date" },
+                  { id: "file", name: "file" },
+                  { id: "search", name: "search" },
+                  { id: "submit", name: "submit" },
+                  { id: "reset", name: "reset" },
+                  { id: "color", name: "color" },
+                ],
+              },
+              {
+                type: "checkbox",
+                name: "required",
+              },
+            ],
+            // As by default, traits are binded to attributes, so to define
+            // their initial value we can use attributes
+            attributes: { type: "text", required: true },
+          },
+        },
+      });
+      //Top
       htmlCodeViewer.set({
         codeName: "htmlmixed",
         readOnly: 0,
@@ -319,7 +469,7 @@ const TopPanels = ({ editor }) => {
         buttons: [
           {
             id: "export",
-            className: "fa fa-code",
+            className: "fa fa-download ",
             attributes: {
               title: "View Code",
             },
@@ -335,7 +485,7 @@ const TopPanels = ({ editor }) => {
           // },
           {
             id: "edit",
-            className: "fa fa-pencil-square-o ",
+            className: "fa fa-code",
             command: "html-edit",
             attributes: {
               title: "Edit",
@@ -482,17 +632,31 @@ const TopPanels = ({ editor }) => {
         id: "basic-actions-3",
         el: ".panel__basic-actions-3",
         buttons: [
-          {
-            id: "about",
-            attributes: {
-              title: "About",
-            },
-            className: "fa fa-info-circle",
-          },
+          // {
+          //   id: "about",
+          //   attributes: {
+          //     title: "About",
+          //   },
+          //   className: "fa fa-info-circle",
+          // },
           {
             id: "help",
             attributes: {
               title: "Help",
+            },
+            command: {
+              run: function (editor) {
+                let modal = editor.Modal;
+                modal.open();
+                modal.setTitle("User Feedback");
+                modal.setContent(
+                  '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSepyCqCXsf85boPWEQDuw5Nb4ax3j8U-PFXKJJb9bDdOWH9zQ/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>'
+                );
+              },
+              // stop: function (editor) {
+              //   let modal = editor.modal;
+              //   modal.close();
+              // },
             },
             className: "fa fa-question",
           },

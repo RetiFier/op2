@@ -52,15 +52,14 @@
   overflow-y: auto;
   height: auto;
   padding-top: 52px;
-
 }
 .react-tabs__tab-list {
   border-bottom: 0px solid #aaa;
   padding: 6px 0px;
   background-color: #004c4c;
   position: absolute;
-    width: 100%;
-    top: 0px;
+  width: 100%;
+  top: 0px;
 }
 .react-tabs__tab--selected {
   background: #fff;
@@ -68,7 +67,9 @@
   color: black;
   border-radius: 6px;
 }
-
+.react-tabs__tab-panel--selected {
+  padding-bottom: 100px;
+}
 .panel__left {
   flex-basis: 350px;
   position: relative;
@@ -83,7 +84,7 @@
 }
 ::-webkit-scrollbar {
   width: 6px;
-  background-color: 	#004c4c;
+  background-color: #004c4c;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #66b2b2;
@@ -91,8 +92,12 @@
 
 /*Start Right Panel Block Feature Styling */
 
-.gjs-block .gjs-block-label p {padding-bottom: 10px}
+.gjs-block .gjs-block-label p {
+  padding-bottom: 10px;
+}
 
-.gjs-block .gjs-block-label i.fa {font-size: xxx-large;}
+.gjs-block .gjs-block-label i.fa {
+  font-size: xxx-large;
+}
 
 /*End  Right Panel Block Feature Styling */

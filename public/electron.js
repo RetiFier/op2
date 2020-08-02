@@ -1,5 +1,5 @@
 const electron = require("electron");
-const { ipcMain, ipcRenderer, remote } = require("electron");
+const { ipcMain, ipcRenderer, remote, globalShortcut } = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
@@ -67,6 +67,11 @@ function createWindow() {
     // Open the DevTools.
     //BrowserWindow.addDevToolsExtension('<location to your react chrome extension>');
     mainWindow.webContents.openDevTools();
+  }
+  if (!isDev) {
+    globalShortcut.register("CommandOrControl+R", () => {
+      console.log("CommandOrControl+R is pressed: Shortcut Disabled");
+    });
   }
   mainWindow.on("closed", () => (mainWindow = null));
   mainWindow.on("close", function (e) {
