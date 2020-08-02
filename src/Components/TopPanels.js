@@ -124,7 +124,9 @@ const TopPanels = ({ editor }) => {
               sel.addRange(range);
               rte.exec("unlink");
             } else {
-              var url = window.confirm("Enter the URL to link to:");
+              var url = window.confirm(
+                "Do you want to change this element to link? If yes ,  you can manage this link attribute in setting"
+              );
               if (url)
                 rte.insertHTML(
                   `<a class="link" href="${url}">${rte.selection()}</a>`
@@ -159,7 +161,7 @@ const TopPanels = ({ editor }) => {
       });
       // Trits
       editor.DomComponents.addType("input", {
-        isComponent: (el) => el.tagName == "INPUT",
+        isComponent: (el) => el.tagName === "INPUT",
         model: {
           defaults: {
             traits: [

@@ -16,6 +16,7 @@ import gradient from "grapesjs-style-gradient";
 import "grapick/dist/grapick.min.css";
 import tUIImageEditor from "grapesjs-tui-image-editor";
 import gjsForms from "grapesjs-plugin-forms";
+import ReactTooltip from "react-tooltip";
 
 const Home = () => {
   const [editor, setEditor] = useState();
@@ -177,7 +178,7 @@ const Home = () => {
   return (
     <>
       <TopPanels editor={editor} />
-
+      <ReactTooltip />
       <div className="editor-row">
         {/* <div className="column panel__left">
           <Tabs
@@ -223,16 +224,16 @@ const Home = () => {
             style={{ overflow: "auto", height: "calc(100vh - 50px)" }}
           >
             <TabList>
-              <Tab>
+              <Tab data-tip="Styling">
                 <FaPalette />
               </Tab>
-              <Tab>
+              <Tab data-tip="Setting">
                 <FaCogs />
               </Tab>
-              <Tab>
+              <Tab data-tip="Layout">
                 <FaBuffer />
               </Tab>
-              <Tab>
+              <Tab data-tip="Component">
                 <AiOutlineBlock />
               </Tab>
             </TabList>
