@@ -51,12 +51,16 @@
   position: relative;
   overflow-y: auto;
   height: auto;
+  padding-top: 52px;
 
 }
 .react-tabs__tab-list {
   border-bottom: 0px solid #aaa;
   padding: 6px 0px;
   background-color: #004c4c;
+  position: absolute;
+    width: 100%;
+    top: 0px;
 }
 .react-tabs__tab--selected {
   background: #fff;
