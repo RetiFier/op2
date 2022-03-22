@@ -5,7 +5,7 @@ import "../Styles/BlockManager.css";
 const BlockManager = ({ editor }) => {
   useEffect(() => {
     const blockManager = !isEmpty(editor) && editor.BlockManager;
-    console.log(blockManager);
+
     if (!isEmpty(editor)) {
       // Start of Typography Component //
       blockManager.add("header1", {

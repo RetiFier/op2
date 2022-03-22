@@ -119,32 +119,10 @@ const Home = () => {
               cr: 0,
               cl: 1,
               bc: 0,
-              // tc: 0, // Top handler
-              // cl: 1, // Left handler
-              // cr: 0, // Right handler
-              // bc: 0, // Bottom handler
-              // Being a flex child we need to change `flex-basis` property
-              // instead of the `width` (default)
+
               keyWidth: "flex-basis",
             },
           },
-          // {
-          //   id: "views-container",
-          //   el: ".imp-mdl-content",
-          // },
-          // {
-          //   id: "code",
-          //   el: ".panel__left",
-          //   // Make the panel resizable
-          //   resizable: {
-          //     maxDim: 350,
-          //     minDim: 200,
-          //     tc: 0,
-          //     cr: 1,
-          //     bc: 0,
-          //     keyWidth: "flex-basis",
-          //   },
-          // },
         ],
       },
 
@@ -161,18 +139,9 @@ const Home = () => {
       traitManager: {
         appendTo: ".traits-container",
       },
-
-      // selectorManager: {
-      //   appendTo: ".code",
-      // }
-      // deviceManager: {
-      //   appendTo: ".panel",
-      // },
     });
-    console.log(grapesEditor && grapesEditor.StyleManager.getSector("Setting"));
+
     setEditor(grapesEditor);
-    // grapesEditor.on("canvas:dragenter", () => setTest(true));
-    // console.log("test");
   }, []);
 
   return (
@@ -180,36 +149,6 @@ const Home = () => {
       <TopPanels editor={editor} />
       <ReactTooltip />
       <div className="editor-row">
-        {/* <div className="column panel__left">
-          <Tabs
-            forceRenderTabPanel
-            defaultIndex={1}
-            style={{ overflow: "auto", height: "calc(100vh - 50px)" }}
-          >
-            <TabList>
-              <Tab>
-                <FaPalette />
-              </Tab>
-              <Tab>
-                <FaBuffer />
-              </Tab>
-              <Tab>
-                <AiOutlineBlock />
-              </Tab>
-            </TabList>
-            <TabPanel>
-              <div className="styles-container"></div>
-              <StyleManager editor={editor} />
-            </TabPanel>
-            <TabPanel>
-              <div className="layers-container"></div>
-            </TabPanel>
-            <TabPanel>
-              <div className="blocks-container"></div>
-              <BlockManager editor={editor} />
-            </TabPanel>
-          </Tabs>
-        </div> */}
         <div className="column editor-canvas">
           <div id="gjs">
             <div className="text-center m-3 p-3">

@@ -4,7 +4,6 @@ import { isEmpty } from "lodash";
 const StyleManager = ({ editor }) => {
   useEffect(() => {
     const styleManager = !isEmpty(editor) && editor.StyleManager;
-    console.log(styleManager);
     if (!isEmpty(editor)) {
       styleManager.addSector("Common", {
         name: "Common Usage",

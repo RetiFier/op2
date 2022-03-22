@@ -8,14 +8,11 @@ const TopPanels = ({ editor }) => {
   const [trigger, setTrigger] = useState(false);
   const [getHTML, setGetHTML] = useState("");
   const [getCSS, setGetCSS] = useState("");
-  // console.log(trigger);
-  // // Home(trigger);
-  // console.log(getHTML);
+
   const panelManager = !isEmpty(editor) && editor.Panels;
   const DeviceSize = !isEmpty(editor) && editor.DeviceManager;
   const CodeManager = !isEmpty(editor) && editor.CodeManager;
 
-  console.log(CodeManager);
   useEffect(() => {
     if (!isEmpty(editor)) {
       var pfx = editor.getConfig().stylePrefix;
@@ -26,30 +23,7 @@ const TopPanels = ({ editor }) => {
       var container = document.createElement("div");
       var btnEdit = document.createElement("button");
       container.className = "imp-dialog";
-      console.log(modal);
-      // const CodeEditor = (type) => {
-      //   // Code Manager
-      //   console.log(type);
-      //   let codeEditor =
-      //     CodeManager &&
-      //     CodeManager.getViewer("CodeMirror") &&
-      //     CodeManager.getViewer("CodeMirror").clone();
-      //   codeEditor &&
-      //     codeEditor.set({
-      //       codeName: type === "html" ? "htmlmixed" : "css",
-      //       readOnly: 0,
-      //       theme: "hopscotch",
-      //       autoBeautify: true,
-      //       autoCloseTags: true,
-      //       autoCloseBrackets: true,
-      //       lineWrapping: true,
-      //       styleActiveLine: true,
-      //       smartIndent: true,
-      //       indentWithTabs: true,
-      //       allowScripts: 1,
-      //     });
-      //   return codeEditor;
-      // };
+
       editor.RichTextEditor.remove("link");
 
       editor.RichTextEditor.add("dropcap", {
@@ -83,7 +57,7 @@ const TopPanels = ({ editor }) => {
               parent.removeChild(container);
             } else {
               rte.insertHTML(
-                `<span class="dropCaps">${rte.selection()}</span>`
+                `<span class="dropCaps">${rte.selection()}</span>`,
               );
             }
           }
@@ -125,11 +99,11 @@ const TopPanels = ({ editor }) => {
               rte.exec("unlink");
             } else {
               var url = window.confirm(
-                "Do you want to change this element to link? If yes ,  you can manage this link attribute in setting"
+                "Do you want to change this element to link? If yes ,  you can manage this link attribute in setting",
               );
               if (url)
                 rte.insertHTML(
-                  `<a class="link" href="${url}">${rte.selection()}</a>`
+                  `<a class="link" href="${url}">${rte.selection()}</a>`,
                 );
             }
           }
@@ -252,14 +226,10 @@ const TopPanels = ({ editor }) => {
       container.appendChild(htmlSection);
       container.appendChild(cssSection);
 
-      // const htmlCodeEditor = CodeEditor("html");
-      // const cssCodeEditor = CodeEditor("css");
       cmdm.add("html-edit", {
         run: function (editor, sender) {
           sender && sender.set("active", 0);
 
-          // var htmlViewer = htmlCodeEditor.editor;
-          // var cssViewer = cssCodeEditor.editor;
           var htmlViewer = htmlCodeViewer.editor;
           var cssViewer = cssCodeViewer.editor;
           modal.setTitle("Edit code");
@@ -276,20 +246,11 @@ const TopPanels = ({ editor }) => {
 
             htmlViewer = htmlCodeViewer.editor;
             cssViewer = cssCodeViewer.editor;
-
-            // var txtarea = document.createElement("textarea");
-            // container.appendChild(txtarea);
-            // container.appendChild(btnEdit);
-            // codeViewer.init(txtarea);
           }
 
-          // htmlCodeEditor.setContent(editor.getHtml());
-          // cssCodeEditor.setContent(editor.getCss({ avoidProtected: true }));
           var InnerHtml = editor.getHtml();
           var Css = editor.getCss({ avoidProtected: true });
 
-          // HtmlAuto(htmlCodeEditor);
-          // CssAuto(cssCodeEditor);
           modal.setContent("");
           modal.setContent(container);
 
@@ -298,11 +259,6 @@ const TopPanels = ({ editor }) => {
           modal.open();
           htmlViewer.refresh();
           cssViewer.refresh();
-          // htmlCodeEditor.setContent(htmlCodeEditor);
-          // cssCodeEditor.setContent(cssCodeEditor);
-          // codeViewer.setContent(InnerHtml + "<style>" + Css + "</style>");
-
-          // viewer.refresh();
         },
       });
       cmdm.add("clear-canvas", function () {
@@ -313,144 +269,6 @@ const TopPanels = ({ editor }) => {
           localStorage.clear();
         }, 0);
       });
-
-      // const HtmlAuto = (htmlCodeEditor) => {
-      //   function update() {
-      //     const htmlCode = htmlCodeEditor.editor.getValue();
-      //     if (!htmlCode) return;
-      //     editor.setComponents(htmlCode);
-      //   }
-      //   var delay;
-      //   htmlCodeEditor.editor.on("change", function () {
-      //     clearTimeout(delay);
-      //     delay = setTimeout(update, 300);
-      //   });
-      //   // htmlCodeEditor.editor.refresh();
-      // };
-
-      // const CssAuto = (cssCodeEditor) => {
-      //   function update() {
-      //     const cssCode = cssCodeEditor.editor.getValue();
-      //     if (!cssCode) return;
-      //     editor.setStyle(cssCode);
-      //   }
-      //   var delay;
-      //   cssCodeEditor.editor.on("change", function () {
-      //     clearTimeout(delay);
-      //     delay = setTimeout(update, 300);
-      //   });
-      // };
-
-      // const CodeEditor = ({ type }) => {
-      //   // Code Manager
-      //   editor.on("update", () => {
-      //     console.log("This is testing");
-      //     // do something
-      //   });
-      //   let codeEditor =
-      //     CodeManager &&
-      //     CodeManager.getViewer("CodeMirror") &&
-      //     CodeManager.getViewer("CodeMirror").clone();
-      //   console.log(codeEditor.editor);
-      //   codeEditor &&
-      //     codeEditor.set({
-      //       codeName: type === "html" ? "htmlmixed" : "css",
-      //       readOnly: false,
-      //       theme: "hopscotch",
-      //       autoBeautify: true,
-      //       autoCloseTags: true,
-      //       autoCloseBrackets: true,
-      //       styleActiveLine: true,
-      //       smartIndent: true,
-      //     });
-      //   return codeEditor;
-      // };
-
-      // const HtmlAuto = (htmlCodeEditor) => {
-      //   console.log(htmlCodeEditor);
-      //   function update() {
-      //     const htmlCode = htmlCodeEditor.editor.getValue();
-      //     if (!htmlCode) return;
-      //     editor.setComponents(htmlCode);
-      //   }
-      //   var delay;
-      //   htmlCodeEditor.editor.on("change", function () {
-      //     clearTimeout(delay);
-      //     delay = setTimeout(update, 300);
-      //   });
-      //   // htmlCodeEditor.editor.refresh();
-      // };
-
-      // const CssAuto = (cssCodeEditor) => {
-      //   function update() {
-      //     const cssCode = cssCodeEditor.editor.getValue();
-      //     if (!cssCode) return;
-      //     editor.setStyle(cssCode);
-      //   }
-      //   var delay;
-      //   cssCodeEditor.editor.on("change", function () {
-      //     clearTimeout(delay);
-      //     delay = setTimeout(update, 300);
-      //   });
-      // };
-
-      // const ImportCode = (panel) => {
-      //   const codePanel = document.createElement("div");
-
-      //   // codePanel.className();
-      //   codePanel.classList.add("code-panel");
-      //   console.log(panel);
-      //   const htmlSection = document.createElement("section");
-      //   const cssSection = document.createElement("section");
-      //   htmlSection.innerHTML = "<div id='imp-cm-title'>HTML</div>";
-      //   cssSection.innerHTML = "<div id='imp-cm-title'>CSS</div>";
-
-      //   const htmlCodeEditor = CodeEditor("html");
-      //   const cssCodeEditor = CodeEditor("css");
-      //   var htmlViewer = htmlCodeEditor.editor;
-      //   var cssViewer = htmlCodeEditor.editor;
-      //   // HtmlAuto(htmlCodeEditor);
-      //   // CssAuto(cssCodeEditor);
-
-      //   const htmlTextArea = document.createElement("textarea");
-      //   const cssTextArea = document.createElement("textarea");
-      //   htmlSection.appendChild(htmlTextArea);
-      //   cssSection.appendChild(cssTextArea);
-
-      //   codePanel.appendChild(htmlSection);
-      //   codePanel.appendChild(cssSection);
-      //   panel.set("appendContent", codePanel).trigger("change:appendContent");
-      //   htmlCodeEditor.init(htmlTextArea);
-      //   cssCodeEditor.init(cssTextArea);
-      //   htmlCodeEditor.setContent(editor.getHtml());
-      //   cssCodeEditor.setContent(editor.getCss({ avoidProtected: false }));
-
-      //   Split([htmlSection, cssSection], {
-      //     direction: "vertical",
-      //     sizes: [50, 50],
-      //     minSize: 100,
-      //     gutterSize: 2,
-      //     onDragEnd: () => {
-      //       htmlViewer.refresh();
-      //       cssViewer.refresh();
-      //     },
-      //   });
-      //   htmlViewer = htmlCodeEditor.editor;
-      //   cssViewer = htmlCodeEditor.editor;
-
-      //   htmlViewer.refresh();
-      //   cssViewer.refresh();
-
-      //   console.log(htmlCodeEditor.editor);
-      //   return codePanel;
-      // };
-
-      // //End Code Manager
-      // const pn = editor.Panels;
-      // const id = "views-container";
-      // const panel = pn.addPanel({ id });
-      // if (!editor.codePanel) editor.codePanel = ImportCode(panel);
-      // console.log(editor.Panels.getPanels(id));
 
       // Start Panel Thing
 
@@ -478,13 +296,7 @@ const TopPanels = ({ editor }) => {
             command: "export-template",
             context: "export-template", // For grouping context of buttons from the same panel
           },
-          // {
-          //   id: "fullscreen",
-          //   className: "fa fa-arrows-alt",
-          //   command: "fullscreen",
-          //   context: "fullscreen",
-          //   attributes: { title: "Fullscreen" },
-          // },
+
           {
             id: "edit",
             className: "fa fa-code",
@@ -500,56 +312,7 @@ const TopPanels = ({ editor }) => {
               title: "Delete All the Code",
             },
             command: "clear-canvas",
-            // command: function (e) {
-            //   // if (
-            //   //   window.confirm("This will be delete entire Page. Are you Sure?")
-            //   // ) {
-            //   const trigger = window.confirm(
-            //     "This will be delete entire Page. Are you Sure?"
-            //   );
-            //   if (trigger === true) {
-            //     e.DomComponents.clear();
-            //   }
-
-            //   console.log(e);
-
-            //   //   setTimeout(function () {
-            //   //     localStorage.clear();
-            //   //   }, 0);
-            //   // }
-            // },
           },
-          // {
-          //   id: "open-code",
-          //   className: "fa fa-cloud-upload",
-          //   command: {
-          //     run: function (editor) {
-          //       let codePanelStyle =
-          //         editor && editor.codePanel && editor.codePanel.style;
-          //       const pn = editor.Panels;
-          //       const id = "views-container";
-          //       const panel = pn.getPanel(id) || pn.addPanel({ id });
-          //       if (!editor.codePanel) editor.codePanel = ImportCode(panel);
-          //       console.log(editor.codePanel);
-          //       // codePanelStyle.display = "block";
-          //       editor.$(".gjs-pn-views-container").get(0).style.width = "35%";
-          //       editor.$(".gjs-cv-canvas").get(0).style.width = "65%";
-          //     },
-          //     stop: function (editor) {
-          //       let codePanelStyle =
-          //         editor && editor.codePanel && editor.codePanel.style;
-          //       if (editor && editor.codePanel) codePanelStyle.display = "none";
-          //       editor.$(".gjs-pn-views-container").get(0).style.width = "15%";
-          //       editor.$(".gjs-cv-canvas").get(0).style.width = "85%";
-          //     },
-          //     // stop: function (editor) {
-          //     //   // if (editor.codePanel) editor.codePanel.style.display = "none";
-          //     //   // editor.$(".gjs-pn-views-container").get(0).style.width = "15%";
-          //     //   // editor.$(".gjs-cv-canvas").get(0).style.width = "85%";
-          //     //   setTrigger(false);
-          //     // },
-          //   },
-          // },
 
           {
             id: "undo",
@@ -558,7 +321,6 @@ const TopPanels = ({ editor }) => {
               title: "Undo",
             },
             command: function (e) {
-              console.log(e);
               e.UndoManager.undo();
             },
           },
@@ -572,13 +334,6 @@ const TopPanels = ({ editor }) => {
               e.UndoManager.redo();
             },
           },
-          // {
-          //   id: "import",
-          //   className: "fa fa-cloud-upload",
-          //   command: function (e) {
-          //     return e.runCommand(r.cmdImport);
-          //   },
-          // },
         ],
       });
       panelManager.addPanel({
@@ -606,13 +361,7 @@ const TopPanels = ({ editor }) => {
             },
             className: "fa fa-tablet",
           },
-          // {
-          //   id: "set-device-tablet2",
-          //   command: function (e) {
-          //     return e.setDevice("Tablet 2");
-          //   },
-          //   className: "fa fa-tablet",
-          // },
+
           {
             id: "set-device-mobile",
             attributes: {
@@ -634,13 +383,6 @@ const TopPanels = ({ editor }) => {
         id: "basic-actions-3",
         el: ".panel__basic-actions-3",
         buttons: [
-          // {
-          //   id: "about",
-          //   attributes: {
-          //     title: "About",
-          //   },
-          //   className: "fa fa-info-circle",
-          // },
           {
             id: "help",
             attributes: {
@@ -652,13 +394,9 @@ const TopPanels = ({ editor }) => {
                 modal.open();
                 modal.setTitle("User Feedback");
                 modal.setContent(
-                  '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSepyCqCXsf85boPWEQDuw5Nb4ax3j8U-PFXKJJb9bDdOWH9zQ/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>'
+                  '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSepyCqCXsf85boPWEQDuw5Nb4ax3j8U-PFXKJJb9bDdOWH9zQ/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>',
                 );
               },
-              // stop: function (editor) {
-              //   let modal = editor.modal;
-              //   modal.close();
-              // },
             },
             className: "fa fa-question",
           },
@@ -669,8 +407,6 @@ const TopPanels = ({ editor }) => {
 
   return (
     <>
-      {/* {trigger === true ? <CodeManagers /> : null} */}
-
       <div className="panel__top">
         <div className="panel__basic-actions"></div>
         <div className="panel__basic-actions-2"></div>
